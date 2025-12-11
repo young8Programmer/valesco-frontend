@@ -2,12 +2,11 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { User, Save, X } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation } from 'react-query';
 import { createApiClient } from '../utils/api';
 
 const ProfilePage = () => {
   const { auth } = useAuth();
-  const queryClient = useQueryClient();
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
