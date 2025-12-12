@@ -400,7 +400,7 @@ const ProductsPage = () => {
                   const imageUrl = firstImage 
                     ? (firstImage.startsWith('http') || firstImage.startsWith('/') 
                         ? firstImage 
-                        : `${auth?.site === 'gpg' ? 'https://gpg-backend-vgrz.onrender.com' : 'https://backend.valescooil.com'}/upload/products/${firstImage}`)
+                        : `${auth?.site === 'gpg' ? 'http://103.125.219.167:3000' : 'https://backend.valescooil.com'}/upload/products/${firstImage}`)
                     : null;
                   
                   return (

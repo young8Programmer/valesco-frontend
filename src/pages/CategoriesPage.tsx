@@ -255,15 +255,15 @@ const CategoriesPage = () => {
               const images = category.images || [];
               if (images.length > 0) {
                 const firstImage = images[0];
-                // Backend returns full URL (e.g., https://gpg-backend-vgrz.onrender.com/1234567890-123456789.jpg)
+                // Backend returns full URL (e.g., http://103.125.219.167:3000/1234567890-123456789.jpg)
                 // or just filename (e.g., 1234567890-123456789.jpg)
                 if (firstImage.startsWith('http://') || firstImage.startsWith('https://')) {
                   categoryImage = firstImage;
                 } else if (firstImage.startsWith('/')) {
-                  categoryImage = `https://gpg-backend-vgrz.onrender.com${firstImage}`;
+                  categoryImage = `http://103.125.219.167:3000${firstImage}`;
                 } else {
                   // Just filename - backend saves directly to upload root, not in subfolders
-                  categoryImage = `https://gpg-backend-vgrz.onrender.com/${firstImage}`;
+                  categoryImage = `http://103.125.219.167:3000/${firstImage}`;
                 }
               }
             } else {

@@ -310,7 +310,7 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
                   // Handle both full URLs and relative paths
                   const imageUrl = img.startsWith('http') || img.startsWith('/') 
                     ? img 
-                    : `${auth?.site === 'gpg' ? 'https://gpg-backend-vgrz.onrender.com' : 'https://backend.valescooil.com'}/upload/products/${img}`;
+                    : `${auth?.site === 'gpg' ? 'http://103.125.219.167:3000' : 'https://backend.valescooil.com'}/upload/products/${img}`;
                   return (
                     <div key={idx} className="relative">
                       <img 

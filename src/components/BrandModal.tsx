@@ -220,7 +220,7 @@ const BrandModal = ({ brand, categories, onClose, onSuccess }: BrandModalProps) 
                 {existingImages.map((img, idx) => {
                   const imageUrl = img.startsWith('http') || img.startsWith('/') 
                     ? img 
-                    : `https://gpg-backend-vgrz.onrender.com/upload/brands/${img}`;
+                    : `http://103.125.219.167:3000/upload/brands/${img}`;
                   return (
                     <div key={idx} className="relative">
                       <img 

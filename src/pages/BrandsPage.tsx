@@ -314,7 +314,7 @@ const BrandsPage = () => {
                   const imageUrl = firstImage 
                     ? (firstImage.startsWith('http') || firstImage.startsWith('/') 
                         ? firstImage 
-                        : `https://gpg-backend-vgrz.onrender.com/upload/brands/${firstImage}`)
+                        : `http://103.125.219.167:3000/upload/brands/${firstImage}`)
                     : null;
                   
                   return (

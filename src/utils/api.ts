@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import type { SiteType } from '../types';
 
 const API_BASE_URLS: Record<SiteType, string> = {
-  gpg: 'http://103.125.219.167:3000/',
+  gpg: 'http://103.125.219.167:3000',
   valesco: 'https://backend.valescooil.com',
 };
 

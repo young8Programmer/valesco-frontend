@@ -276,10 +276,10 @@ const CategoryModal = ({ category, onClose, onSuccess }: CategoryModalProps) => 
                     if (img.startsWith('http://') || img.startsWith('https://')) {
                       imageUrl = img;
                     } else if (img.startsWith('/')) {
-                      imageUrl = `https://gpg-backend-vgrz.onrender.com${img}`;
+                      imageUrl = `http://103.125.219.167:3000${img}`;
                     } else {
                       // Just filename - backend saves directly to upload root
-                      imageUrl = `https://gpg-backend-vgrz.onrender.com/${img}`;
+                      imageUrl = `http://103.125.219.167:3000/${img}`;
                     }
                   } else {
                     // Valesco
