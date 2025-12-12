@@ -22,6 +22,7 @@ const CategoryModal = ({ category, onClose, onSuccess }: CategoryModalProps) => 
     descriptionEn: '',
   });
   const [images, setImages] = useState<File[]>([]);
+  const [imagePreviews, setImagePreviews] = useState<string[]>([]);
   const [existingImages, setExistingImages] = useState<string[]>([]);
 
   useEffect(() => {
@@ -36,6 +37,18 @@ const CategoryModal = ({ category, onClose, onSuccess }: CategoryModalProps) => 
       // GPG uses images array, Valesco uses single image
       const categoryImages = category.images || (category.image ? [category.image] : []);
       setExistingImages(Array.isArray(categoryImages) ? categoryImages : [categoryImages].filter(Boolean));
+    } else {
+      // Reset when creating new category
+      setFormData({
+        nameRu: '',
+        nameEn: '',
+        name: '',
+        descriptionRu: '',
+        descriptionEn: '',
+      });
+      setImages([]);
+      setImagePreviews([]);
+      setExistingImages([]);
     }
   }, [category]);
 
@@ -53,7 +66,7 @@ const CategoryModal = ({ category, onClose, onSuccess }: CategoryModalProps) => 
         if (formData.nameEn) formDataToSend.append('nameEn', formData.nameEn);
         if (formData.descriptionRu) formDataToSend.append('descriptionRu', formData.descriptionRu);
         if (formData.descriptionEn) formDataToSend.append('descriptionEn', formData.descriptionEn);
-        // GPG supports multiple images
+        // GPG supports multiple images - send only new images
         images.forEach((img) => {
           formDataToSend.append('images', img);
         });
@@ -72,6 +85,10 @@ const CategoryModal = ({ category, onClose, onSuccess }: CategoryModalProps) => 
         toast.success('Kategoriya yaratildi');
       }
 
+      // Clean up object URLs
+      imagePreviews.forEach(url => URL.revokeObjectURL(url));
+      setImages([]);
+      setImagePreviews([]);
       onSuccess();
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Xatolik yuz berdi');
@@ -81,21 +98,47 @@ const CategoryModal = ({ category, onClose, onSuccess }: CategoryModalProps) => 
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
+    if (e.target.files && e.target.files.length > 0) {
+      const newFiles = Array.from(e.target.files);
       if (auth?.site === 'gpg') {
-        // GPG supports multiple images
-        setImages(Array.from(e.target.files));
+        // GPG supports multiple images - add to existing
+        setImages(prev => [...prev, ...newFiles]);
+        // Create previews for new images
+        const newPreviews = newFiles.map(file => URL.createObjectURL(file));
+        setImagePreviews(prev => [...prev, ...newPreviews]);
       } else {
         // Valesco supports single image
-        setImages(e.target.files[0] ? [e.target.files[0]] : []);
+        setImages([e.target.files[0]]);
+        setImagePreviews([URL.createObjectURL(e.target.files[0])]);
       }
     }
+    // Reset input to allow selecting same file again
+    e.target.value = '';
+  };
+
+  const handleRemoveImage = (index: number) => {
+    if (auth?.site === 'gpg') {
+      setImages(prev => prev.filter((_, i) => i !== index));
+      // Revoke object URL to free memory
+      URL.revokeObjectURL(imagePreviews[index]);
+      setImagePreviews(prev => prev.filter((_, i) => i !== index));
+    } else {
+      setImages([]);
+      if (imagePreviews[0]) {
+        URL.revokeObjectURL(imagePreviews[0]);
+      }
+      setImagePreviews([]);
+    }
+  };
+
+  const handleRemoveExistingImage = (index: number) => {
+    setExistingImages(prev => prev.filter((_, i) => i !== index));
   };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-xl max-w-lg w-full">
-        <div className="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between">
+      <div className="bg-white rounded-xl shadow-xl max-w-lg w-full max-h-[90vh] flex flex-col">
+        <div className="flex-shrink-0 bg-white border-b px-6 py-4 flex items-center justify-between">
           <h3 className="text-xl font-bold text-gray-900">
             {category ? 'Kategoriyani tahrirlash' : 'Yangi kategoriya'}
           </h3>
@@ -107,7 +150,7 @@ const CategoryModal = ({ category, onClose, onSuccess }: CategoryModalProps) => 
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-4">
           {auth?.site === 'gpg' ? (
             <>
               <div>
@@ -191,43 +234,59 @@ const CategoryModal = ({ category, onClose, onSuccess }: CategoryModalProps) => 
                 <span className="text-sm text-gray-600">{images.length} fayl tanlandi</span>
               )}
             </div>
-            {existingImages.length > 0 && images.length === 0 && (
+            {existingImages.length > 0 && (
               <div className="mt-2 flex flex-wrap gap-2">
                 {existingImages.map((img, idx) => {
                   const imageUrl = img.startsWith('http') || img.startsWith('/') 
                     ? img 
                     : `${auth?.site === 'gpg' ? 'https://gpg-backend-vgrz.onrender.com' : 'https://backend.valescooil.com'}/upload/categories/${img}`;
                   return (
-                    <img 
-                      key={idx} 
-                      src={imageUrl} 
-                      alt="Existing" 
-                      className="w-32 h-32 object-cover rounded"
-                      onError={(e) => {
-                        if (!img.startsWith('http')) {
-                          (e.target as HTMLImageElement).src = img;
-                        }
-                      }}
-                    />
+                    <div key={idx} className="relative">
+                      <img 
+                        src={imageUrl} 
+                        alt="Existing" 
+                        className="w-32 h-32 object-cover rounded"
+                        onError={(e) => {
+                          if (!img.startsWith('http')) {
+                            (e.target as HTMLImageElement).src = img;
+                          }
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveExistingImage(idx)}
+                        className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
                   );
                 })}
               </div>
             )}
-            {images.length > 0 && (
+            {imagePreviews.length > 0 && (
               <div className="mt-2 flex flex-wrap gap-2">
-                {images.map((img, idx) => (
-                  <img 
-                    key={idx} 
-                    src={URL.createObjectURL(img)} 
-                    alt="Preview" 
-                    className="w-32 h-32 object-cover rounded" 
-                  />
+                {imagePreviews.map((preview, idx) => (
+                  <div key={idx} className="relative">
+                    <img 
+                      src={preview} 
+                      alt="Preview" 
+                      className="w-32 h-32 object-cover rounded" 
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveImage(idx)}
+                      className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
                 ))}
               </div>
             )}
           </div>
 
-          <div className="flex items-center justify-end space-x-3 pt-4 border-t">
+          <div className="flex-shrink-0 flex items-center justify-end space-x-3 pt-4 border-t bg-white sticky bottom-0">
             <button
               type="button"
               onClick={onClose}

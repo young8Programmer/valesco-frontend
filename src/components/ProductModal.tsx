@@ -26,7 +26,6 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
     description_en: '',
     categoryId: '',
     brandId: '',
-    price: '',
   });
   const [images, setImages] = useState<File[]>([]);
   const [existingImages, setExistingImages] = useState<string[]>([]);
@@ -43,7 +42,6 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
         description_en: product.description_en || '',
         categoryId: product.categoryId?.toString() || '',
         brandId: product.brandId?.toString() || '',
-        price: product.price?.toString() || '',
       });
       // GPG uses images array, Valesco uses image array
       const productImages = product.images || product.image || [];
@@ -73,10 +71,9 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
         }
         formDataToSend.append('nameRu', formData.nameRu);
         if (formData.nameEn) formDataToSend.append('nameEn', formData.nameEn);
-        if (formData.descriptionRu) formDataToSend.append('descriptionRu', formData.descriptionRu);
+        if (formData.descriptionRu)         if (formData.descriptionRu) formDataToSend.append('descriptionRu', formData.descriptionRu);
         if (formData.descriptionEn) formDataToSend.append('descriptionEn', formData.descriptionEn);
         formDataToSend.append('brandId', formData.brandId);
-        if (formData.price) formDataToSend.append('price', formData.price);
       } else {
         if (formData.title) formDataToSend.append('title', formData.title);
         if (formData.description_ru) formDataToSend.append('description_ru', formData.description_ru);
@@ -116,8 +113,8 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between">
+      <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
+        <div className="flex-shrink-0 bg-white border-b px-6 py-4 flex items-center justify-between">
           <h3 className="text-xl font-bold text-gray-900">
             {product ? 'Mahsulotni tahrirlash' : 'Yangi mahsulot'}
           </h3>
@@ -129,7 +126,7 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-4">
           {auth?.site === 'gpg' ? (
             <>
               <div>
@@ -234,21 +231,6 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
             />
           </div>
 
-          {auth?.site === 'gpg' && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Narx
-              </label>
-              <input
-                type="number"
-                value={formData.price}
-                onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                placeholder="Masalan: 150000"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
-              />
-            </div>
-          )}
-
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Rasmlar
@@ -295,7 +277,7 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
             )}
           </div>
 
-          <div className="flex items-center justify-end space-x-3 pt-4 border-t">
+          <div className="flex-shrink-0 flex items-center justify-end space-x-3 pt-4 border-t bg-white sticky bottom-0">
             <button
               type="button"
               onClick={onClose}

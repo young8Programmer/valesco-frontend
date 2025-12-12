@@ -22,6 +22,7 @@ const BrandModal = ({ brand, categories, onClose, onSuccess }: BrandModalProps) 
     categoryId: '',
   });
   const [images, setImages] = useState<File[]>([]);
+  const [imagePreviews, setImagePreviews] = useState<string[]>([]);
   const [existingImages, setExistingImages] = useState<string[]>([]);
 
   useEffect(() => {
@@ -35,6 +36,17 @@ const BrandModal = ({ brand, categories, onClose, onSuccess }: BrandModalProps) 
       });
       const brandImages = brandData.images || [];
       setExistingImages(Array.isArray(brandImages) ? brandImages : [brandImages].filter(Boolean));
+    } else {
+      // Reset when creating new brand
+      setFormData({
+        name: '',
+        nameRu: '',
+        nameEn: '',
+        categoryId: '',
+      });
+      setImages([]);
+      setImagePreviews([]);
+      setExistingImages([]);
     }
   }, [brand]);
 
@@ -59,6 +71,7 @@ const BrandModal = ({ brand, categories, onClose, onSuccess }: BrandModalProps) 
       formDataToSend.append('name', formData.name);
       if (formData.nameRu) formDataToSend.append('nameRu', formData.nameRu);
       if (formData.nameEn) formDataToSend.append('nameEn', formData.nameEn);
+      // categoryId must be sent as string (FormData limitation), backend will parse it
       formDataToSend.append('categoryId', formData.categoryId);
 
       // Add images
@@ -74,6 +87,10 @@ const BrandModal = ({ brand, categories, onClose, onSuccess }: BrandModalProps) 
         toast.success('Brend yaratildi');
       }
 
+      // Clean up object URLs
+      imagePreviews.forEach(url => URL.revokeObjectURL(url));
+      setImages([]);
+      setImagePreviews([]);
       onSuccess();
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Xatolik yuz berdi');
@@ -83,15 +100,33 @@ const BrandModal = ({ brand, categories, onClose, onSuccess }: BrandModalProps) 
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setImages(Array.from(e.target.files));
+    if (e.target.files && e.target.files.length > 0) {
+      const newFiles = Array.from(e.target.files);
+      // Add to existing images
+      setImages(prev => [...prev, ...newFiles]);
+      // Create previews for new images
+      const newPreviews = newFiles.map(file => URL.createObjectURL(file));
+      setImagePreviews(prev => [...prev, ...newPreviews]);
     }
+    // Reset input to allow selecting same file again
+    e.target.value = '';
+  };
+
+  const handleRemoveImage = (index: number) => {
+    setImages(prev => prev.filter((_, i) => i !== index));
+    // Revoke object URL to free memory
+    URL.revokeObjectURL(imagePreviews[index]);
+    setImagePreviews(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const handleRemoveExistingImage = (index: number) => {
+    setExistingImages(prev => prev.filter((_, i) => i !== index));
   };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between">
+      <div className="bg-white rounded-xl shadow-xl max-w-lg w-full max-h-[90vh] flex flex-col">
+        <div className="flex-shrink-0 bg-white border-b px-6 py-4 flex items-center justify-between">
           <h3 className="text-xl font-bold text-gray-900">
             {brand ? 'Brendni tahrirlash' : 'Yangi brend'}
           </h3>
@@ -103,7 +138,7 @@ const BrandModal = ({ brand, categories, onClose, onSuccess }: BrandModalProps) 
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Nomi *
@@ -187,24 +222,52 @@ const BrandModal = ({ brand, categories, onClose, onSuccess }: BrandModalProps) 
                     ? img 
                     : `https://gpg-backend-vgrz.onrender.com/upload/brands/${img}`;
                   return (
-                    <img 
-                      key={idx} 
-                      src={imageUrl} 
-                      alt="Existing" 
-                      className="w-16 h-16 object-cover rounded"
-                      onError={(e) => {
-                        if (!img.startsWith('http')) {
-                          (e.target as HTMLImageElement).src = img;
-                        }
-                      }}
-                    />
+                    <div key={idx} className="relative">
+                      <img 
+                        src={imageUrl} 
+                        alt="Existing" 
+                        className="w-32 h-32 object-cover rounded"
+                        onError={(e) => {
+                          if (!img.startsWith('http')) {
+                            (e.target as HTMLImageElement).src = img;
+                          }
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveExistingImage(idx)}
+                        className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
                   );
                 })}
               </div>
             )}
+            {imagePreviews.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-2">
+                {imagePreviews.map((preview, idx) => (
+                  <div key={idx} className="relative">
+                    <img 
+                      src={preview} 
+                      alt="Preview" 
+                      className="w-32 h-32 object-cover rounded" 
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveImage(idx)}
+                      className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="flex items-center justify-end space-x-3 pt-4 border-t">
+          <div className="flex-shrink-0 flex items-center justify-end space-x-3 pt-4 border-t bg-white sticky bottom-0">
             <button
               type="button"
               onClick={onClose}
