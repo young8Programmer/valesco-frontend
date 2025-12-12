@@ -9,7 +9,8 @@ import {
   X,
   Globe,
   User,
-  ChevronDown
+  ChevronDown,
+  Tag
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import toast from 'react-hot-toast';
@@ -69,6 +70,7 @@ const Layout = () => {
   const navItems = [
     { path: '/', label: 'Dashboard', icon: LayoutDashboard },
     { path: '/products', label: 'Mahsulotlar', icon: Package },
+    ...(auth?.site === 'gpg' ? [{ path: '/brands', label: 'Brendlar', icon: Tag }] : []),
     { path: '/categories', label: 'Kategoriyalar', icon: FolderTree },
   ];
 

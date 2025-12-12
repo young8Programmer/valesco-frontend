@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 import ProductsPage from './pages/ProductsPage';
 import CategoriesPage from './pages/CategoriesPage';
+import BrandsPage from './pages/BrandsPage';
 import ProfilePage from './pages/ProfilePage';
 import Layout from './components/Layout';
 
@@ -50,6 +51,7 @@ const AppRoutes = () => {
       >
         <Route index element={<Dashboard />} />
         <Route path="products" element={<ProductsPage />} />
+        <Route path="brands" element={<BrandsPage />} />
         <Route path="categories" element={<CategoriesPage />} />
         <Route path="profile" element={<ProfilePage />} />
       </Route>

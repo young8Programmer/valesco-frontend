@@ -26,6 +26,7 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
     description_en: '',
     categoryId: '',
     brandId: '',
+    price: '',
   });
   const [images, setImages] = useState<File[]>([]);
   const [existingImages, setExistingImages] = useState<string[]>([]);
@@ -42,6 +43,7 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
         description_en: product.description_en || '',
         categoryId: product.categoryId?.toString() || '',
         brandId: product.brandId?.toString() || '',
+        price: product.price?.toString() || '',
       });
       // GPG uses images array, Valesco uses image array
       const productImages = product.images || product.image || [];
@@ -59,11 +61,22 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
 
       // Add form fields based on site
       if (auth.site === 'gpg') {
-        if (formData.nameRu) formDataToSend.append('nameRu', formData.nameRu);
+        if (!formData.nameRu) {
+          toast.error('Nomi (RU) majburiy');
+          setLoading(false);
+          return;
+        }
+        if (!formData.brandId) {
+          toast.error('Brend majburiy');
+          setLoading(false);
+          return;
+        }
+        formDataToSend.append('nameRu', formData.nameRu);
         if (formData.nameEn) formDataToSend.append('nameEn', formData.nameEn);
         if (formData.descriptionRu) formDataToSend.append('descriptionRu', formData.descriptionRu);
         if (formData.descriptionEn) formDataToSend.append('descriptionEn', formData.descriptionEn);
-        if (formData.brandId) formDataToSend.append('brandId', formData.brandId);
+        formDataToSend.append('brandId', formData.brandId);
+        if (formData.price) formDataToSend.append('price', formData.price);
       } else {
         if (formData.title) formDataToSend.append('title', formData.title);
         if (formData.description_ru) formDataToSend.append('description_ru', formData.description_ru);
@@ -170,12 +183,19 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
               >
                 <option value="">Brend tanlang</option>
-                {brands.map((brand) => (
-                  <option key={brand.id} value={brand.id}>
-                    {brand.nameRu || brand.name || brand.nameEn}
-                  </option>
-                ))}
+                {brands.length > 0 ? (
+                  brands.map((brand) => (
+                    <option key={brand.id} value={brand.id}>
+                      {brand.nameRu || brand.name || brand.nameEn}
+                    </option>
+                  ))
+                ) : (
+                  <option value="" disabled>Brendlar mavjud emas. Avval brend yarating.</option>
+                )}
               </select>
+              {brands.length === 0 && (
+                <p className="text-xs text-red-500 mt-1">Brendlar mavjud emas. Avval brend yarating.</p>
+              )}
             </div>
           ) : (
             <div>
@@ -213,6 +233,21 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
             />
           </div>
+
+          {auth?.site === 'gpg' && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Narx
+              </label>
+              <input
+                type="number"
+                value={formData.price}
+                onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                placeholder="Masalan: 150000"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+              />
+            </div>
+          )}
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
