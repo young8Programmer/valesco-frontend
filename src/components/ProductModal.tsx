@@ -28,6 +28,7 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
     brandId: '',
   });
   const [images, setImages] = useState<File[]>([]);
+  const [imagePreviews, setImagePreviews] = useState<string[]>([]);
   const [existingImages, setExistingImages] = useState<string[]>([]);
 
   useEffect(() => {
@@ -46,6 +47,22 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
       // GPG uses images array, Valesco uses image array
       const productImages = product.images || product.image || [];
       setExistingImages(Array.isArray(productImages) ? productImages : [productImages].filter(Boolean));
+    } else {
+      // Reset when creating new product
+      setFormData({
+        nameRu: '',
+        nameEn: '',
+        title: '',
+        descriptionRu: '',
+        descriptionEn: '',
+        description_ru: '',
+        description_en: '',
+        categoryId: '',
+        brandId: '',
+      });
+      setImages([]);
+      setImagePreviews([]);
+      setExistingImages([]);
     }
   }, [product]);
 
@@ -71,7 +88,7 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
         }
         formDataToSend.append('nameRu', formData.nameRu);
         if (formData.nameEn) formDataToSend.append('nameEn', formData.nameEn);
-        if (formData.descriptionRu)         if (formData.descriptionRu) formDataToSend.append('descriptionRu', formData.descriptionRu);
+        if (formData.descriptionRu) formDataToSend.append('descriptionRu', formData.descriptionRu);
         if (formData.descriptionEn) formDataToSend.append('descriptionEn', formData.descriptionEn);
         formDataToSend.append('brandId', formData.brandId);
       } else {
@@ -97,6 +114,10 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
         toast.success('Mahsulot yaratildi');
       }
 
+      // Clean up object URLs
+      imagePreviews.forEach(url => URL.revokeObjectURL(url));
+      setImages([]);
+      setImagePreviews([]);
       onSuccess();
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Xatolik yuz berdi');
@@ -106,9 +127,41 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setImages(Array.from(e.target.files));
+    if (e.target.files && e.target.files.length > 0) {
+      const newFiles = Array.from(e.target.files);
+      if (auth?.site === 'gpg') {
+        // GPG supports multiple images - add to existing
+        setImages(prev => [...prev, ...newFiles]);
+        // Create previews for new images
+        const newPreviews = newFiles.map(file => URL.createObjectURL(file));
+        setImagePreviews(prev => [...prev, ...newPreviews]);
+      } else {
+        // Valesco supports single image
+        setImages([e.target.files[0]]);
+        setImagePreviews([URL.createObjectURL(e.target.files[0])]);
+      }
     }
+    // Reset input to allow selecting same file again
+    e.target.value = '';
+  };
+
+  const handleRemoveImage = (index: number) => {
+    if (auth?.site === 'gpg') {
+      setImages(prev => prev.filter((_, i) => i !== index));
+      // Revoke object URL to free memory
+      URL.revokeObjectURL(imagePreviews[index]);
+      setImagePreviews(prev => prev.filter((_, i) => i !== index));
+    } else {
+      setImages([]);
+      if (imagePreviews[0]) {
+        URL.revokeObjectURL(imagePreviews[0]);
+      }
+      setImagePreviews([]);
+    }
+  };
+
+  const handleRemoveExistingImage = (index: number) => {
+    setExistingImages(prev => prev.filter((_, i) => i !== index));
   };
 
   return (
@@ -241,7 +294,7 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
                 <span className="text-sm text-gray-700">Rasm tanlash</span>
                 <input
                   type="file"
-                  multiple
+                  multiple={auth?.site === 'gpg'}
                   accept="image/*"
                   onChange={handleImageChange}
                   className="hidden"
@@ -259,20 +312,48 @@ const ProductModal = ({ product, categories, brands = [], onClose, onSuccess }: 
                     ? img 
                     : `${auth?.site === 'gpg' ? 'https://gpg-backend-vgrz.onrender.com' : 'https://backend.valescooil.com'}/upload/products/${img}`;
                   return (
-                    <img 
-                      key={idx} 
-                      src={imageUrl} 
-                      alt="Existing" 
-                      className="w-16 h-16 object-cover rounded"
-                      onError={(e) => {
-                        // Fallback to direct URL if relative path fails
-                        if (!img.startsWith('http')) {
-                          (e.target as HTMLImageElement).src = img;
-                        }
-                      }}
-                    />
+                    <div key={idx} className="relative">
+                      <img 
+                        src={imageUrl} 
+                        alt="Existing" 
+                        className="w-32 h-32 object-cover rounded"
+                        onError={(e) => {
+                          // Fallback to direct URL if relative path fails
+                          if (!img.startsWith('http')) {
+                            (e.target as HTMLImageElement).src = img;
+                          }
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveExistingImage(idx)}
+                        className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
                   );
                 })}
+              </div>
+            )}
+            {imagePreviews.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-2">
+                {imagePreviews.map((preview, idx) => (
+                  <div key={idx} className="relative">
+                    <img 
+                      src={preview} 
+                      alt="Preview" 
+                      className="w-32 h-32 object-cover rounded" 
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveImage(idx)}
+                      className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
               </div>
             )}
           </div>
