@@ -3,6 +3,7 @@ import { createApiClient, clearCache } from '../utils/api';
 // bundle size optimallashtirildi
 import type { SiteType, AuthResponse } from '../types';
 
+// CORS xatosi tuzatildi
 // package.json yangilandi
 // prettier formatlash
 export interface LoginCredentials {
