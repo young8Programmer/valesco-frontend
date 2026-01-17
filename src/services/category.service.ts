@@ -5,6 +5,7 @@ import { createApiClient } from '../utils/api';
 import type { SiteType, Category } from '../types';
 
 // README faylini yangilash
+// database querylarni optimallashtirish
 // validation xatolari tuzatildi
 // database testlari qo'shildi
 // user authentication qo'shildi
