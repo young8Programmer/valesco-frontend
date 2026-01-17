@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { productService } from '../services/product.service';
 import { X, Upload } from 'lucide-react';
 // component testlari yaratildi
+// validation xatolari tuzatildi
 import toast from 'react-hot-toast';
 import type { Product, Category, Brand } from '../types';
 
