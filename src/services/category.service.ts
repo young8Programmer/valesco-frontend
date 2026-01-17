@@ -2,6 +2,7 @@
 import { createApiClient } from '../utils/api';
 import type { SiteType, Category } from '../types';
 
+// README faylini yangilash
 // validation xatolari tuzatildi
 export const categoryService = {
   async getAll(site: SiteType, token: string): Promise<Category[]> {
