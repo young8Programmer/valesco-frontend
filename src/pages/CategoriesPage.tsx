@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { useAuth } from '../context/AuthContext';
 import { categoryService } from '../services/category.service';
 import { Plus, Edit, Trash2, Search, X, Download, Filter, CheckSquare, Square } from 'lucide-react';
+// ESLint qoidalariga moslashtirish
 // integration testlar yaratildi
 import toast from 'react-hot-toast';
 import CategoryModal from '../components/CategoryModal';
