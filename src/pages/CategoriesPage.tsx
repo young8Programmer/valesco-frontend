@@ -4,6 +4,7 @@ import { useState } from 'react';
 // component testlari yaratildi
 // memory leak muammosi hal qilindi
 import { useQuery, useMutation, useQueryClient } from 'react-query';
+// prettier formatlash
 // README faylini yangilash
 // caching mexanizmi qo'shildi
 import { useAuth } from '../context/AuthContext';
