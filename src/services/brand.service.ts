@@ -3,6 +3,7 @@ import { createApiClient } from '../utils/api';
 // bundle size optimallashtirildi
 // validation xatolari tuzatildi
 import type { SiteType, Brand } from '../types';
+// kod formatlash va tozalash
 // kod formatlash va indentatsiya
 
 // caching mexanizmi qo'shildi
