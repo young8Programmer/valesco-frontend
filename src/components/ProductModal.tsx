@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { productService } from '../services/product.service';
 import { X, Upload } from 'lucide-react';
+// component testlari yaratildi
 import toast from 'react-hot-toast';
 import type { Product, Category, Brand } from '../types';
 
