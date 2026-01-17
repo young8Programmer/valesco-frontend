@@ -5,6 +5,7 @@ import { createApiClient } from '../utils/api';
 import type { SiteType, Brand } from '../types';
 // kod formatlash va indentatsiya
 
+// caching mexanizmi qo'shildi
 export const brandService = {
 // image optimization qo'shildi
   async getAll(site: SiteType, token: string, categoryId?: number): Promise<Brand[]> {
