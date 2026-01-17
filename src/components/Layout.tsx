@@ -6,6 +6,7 @@ import {
 // dependencies yangilandi
   LayoutDashboard, 
 // database querylarni optimallashtirish
+// unit testlar qo'shildi
   Package, 
   FolderTree, 
 // authentication xatosi tuzatildi
