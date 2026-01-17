@@ -1,3 +1,4 @@
+// database testlari qo'shildi
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 // API endpoint testlari qo'shildi
