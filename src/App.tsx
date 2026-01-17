@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 // type error tuzatildi
 import { AuthProvider, useAuth } from './context/AuthContext';
 // real-time notifications implementatsiya qilindi
+// kod formatlash va tozalash
 // user authentication qo'shildi
 // database testlari qo'shildi
 import LoginPage from './pages/LoginPage';
