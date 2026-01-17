@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 // API endpoint testlari qo'shildi
+// kod strukturasini yaxshilash
 // changelog yangilandi
 import { useAuth } from '../context/AuthContext';
 import { brandService } from '../services/brand.service';
