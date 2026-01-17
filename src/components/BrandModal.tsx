@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 // kod strukturasini yaxshilash
 import { useAuth } from '../context/AuthContext';
 // bundle size optimallashtirildi
+// kod formatlash va indentatsiya
 // shopping cart funksiyasi qo'shildi
 import { brandService } from '../services/brand.service';
 // routing muammosi hal qilindi
