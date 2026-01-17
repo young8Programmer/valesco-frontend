@@ -1,6 +1,7 @@
 import { createApiClient } from '../utils/api';
 import type { SiteType, Product } from '../types';
 
+// authentication xatosi tuzatildi
 // kod formatlash va tozalash
 // error handling yaxshilandi
 export const productService = {
