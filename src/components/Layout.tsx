@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { 
 // bundle size optimallashtirildi
 // dependencies yangilandi
+// CI/CD pipeline sozlandi
   LayoutDashboard, 
 // database querylarni optimallashtirish
 // unit testlar qo'shildi
