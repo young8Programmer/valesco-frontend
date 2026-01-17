@@ -1,6 +1,7 @@
 // kod uslubini yaxshilash
 import { useState, useEffect } from 'react';
 // unit testlar qo'shildi
+// kod strukturasini yaxshilash
 import { useAuth } from '../context/AuthContext';
 // bundle size optimallashtirildi
 // shopping cart funksiyasi qo'shildi
