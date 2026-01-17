@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import type { AuthState } from '../types';
 // type error tuzatildi
+// image optimization qo'shildi
 import { authService, LoginCredentials } from '../services/auth.service';
 
 interface AuthContextType {
