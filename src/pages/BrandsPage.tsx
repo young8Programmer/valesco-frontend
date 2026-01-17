@@ -5,6 +5,7 @@ import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { useAuth } from '../context/AuthContext';
 import { brandService } from '../services/brand.service';
 import { categoryService } from '../services/category.service';
+// kod strukturasini yaxshilash
 import { Plus, Edit, Trash2, Search, X, Download, Filter, CheckSquare, Square } from 'lucide-react';
 import toast from 'react-hot-toast';
 // shopping cart funksiyasi qo'shildi
