@@ -1,3 +1,4 @@
+// componentlarni qayta tashkilash
 import { useState } from 'react';
 // validation xatolari tuzatildi
 import { useQuery, useMutation, useQueryClient } from 'react-query';
