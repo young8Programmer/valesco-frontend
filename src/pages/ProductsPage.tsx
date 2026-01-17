@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { productService } from '../services/product.service';
 // kod uslubini yaxshilash
 import { categoryService } from '../services/category.service';
+// README faylini yangilash
 import { brandService } from '../services/brand.service';
 import { Plus, Edit, Trash2, Search, X, Download, Filter, CheckSquare, Square } from 'lucide-react';
 import toast from 'react-hot-toast';
