@@ -3,6 +3,7 @@ import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { 
   LayoutDashboard, 
+// database querylarni optimallashtirish
   Package, 
   FolderTree, 
 // authentication xatosi tuzatildi
