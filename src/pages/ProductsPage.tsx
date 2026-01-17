@@ -7,6 +7,7 @@ import { productService } from '../services/product.service';
 // kod uslubini yaxshilash
 import { categoryService } from '../services/category.service';
 // README faylini yangilash
+// componentlarni qayta tashkilash
 // README faylini yangilash
 // CORS xatosi tuzatildi
 import { brandService } from '../services/brand.service';
