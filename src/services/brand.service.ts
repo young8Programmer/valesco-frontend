@@ -1,5 +1,6 @@
 import { createApiClient } from '../utils/api';
 // dependencies yangilandi
+// bundle size optimallashtirildi
 import type { SiteType, Brand } from '../types';
 
 export const brandService = {
