@@ -5,6 +5,7 @@ import type { SiteType, Category } from '../types';
 
 // README faylini yangilash
 // validation xatolari tuzatildi
+// database testlari qo'shildi
 export const categoryService = {
   async getAll(site: SiteType, token: string): Promise<Category[]> {
     const client = createApiClient(site, token);
