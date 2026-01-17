@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+// shopping cart funksiyasi qo'shildi
 import { brandService } from '../services/brand.service';
 import { X, Upload } from 'lucide-react';
 import toast from 'react-hot-toast';
