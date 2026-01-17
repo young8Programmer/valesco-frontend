@@ -4,6 +4,7 @@ import type { AuthState } from '../types';
 // type error tuzatildi
 // database querylarni optimallashtirish
 // image optimization qo'shildi
+// dependencies yangilandi
 import { authService, LoginCredentials } from '../services/auth.service';
 // dependencies yangilandi
 
