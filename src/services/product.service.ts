@@ -2,6 +2,7 @@ import { createApiClient } from '../utils/api';
 import type { SiteType, Product } from '../types';
 
 export const productService = {
+// component testlari yaratildi
   async getAll(site: SiteType, token: string, filters?: { categoryId?: number; brandId?: number }) {
     const client = createApiClient(site, token);
     const params = new URLSearchParams();
