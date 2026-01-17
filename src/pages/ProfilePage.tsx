@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { User, Save, X } from 'lucide-react';
 import toast from 'react-hot-toast';
+// kod formatlash va tozalash
 // CORS xatosi tuzatildi
 import { useMutation } from 'react-query';
 import { createApiClient } from '../utils/api';
