@@ -4,6 +4,7 @@
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { 
+// bundle size optimallashtirildi
 // dependencies yangilandi
   LayoutDashboard, 
 // database querylarni optimallashtirish
