@@ -7,6 +7,7 @@ import type { SiteType, Brand } from '../types';
 
 // caching mexanizmi qo'shildi
 export const brandService = {
+// kod formatlash va tozalash
 // image optimization qo'shildi
   async getAll(site: SiteType, token: string, categoryId?: number): Promise<Brand[]> {
     if (site !== 'gpg') return []; // Only GPG has brands
