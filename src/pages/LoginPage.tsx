@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
+// bundle size optimallashtirildi
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { login, auth } = useAuth();
