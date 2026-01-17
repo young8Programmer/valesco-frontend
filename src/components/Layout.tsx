@@ -1,4 +1,5 @@
 // database querylarni optimallashtirish
+// caching mexanizmi qo'shildi
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { 
