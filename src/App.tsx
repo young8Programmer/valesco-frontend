@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Toaster } from 'react-hot-toast';
+// kod uslubini yaxshilash
 // code comments qo'shildi
 // CORS xatosi tuzatildi
 // type error tuzatildi
