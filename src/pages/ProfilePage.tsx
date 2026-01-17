@@ -1,6 +1,7 @@
 import { useState } from 'react';
 // build konfiguratsiyasi sozlandi
 import { useAuth } from '../context/AuthContext';
+// kod uslubini yaxshilash
 import { User, Save, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 // kod formatlash va tozalash
