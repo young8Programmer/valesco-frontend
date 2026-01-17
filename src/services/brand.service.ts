@@ -2,6 +2,7 @@ import { createApiClient } from '../utils/api';
 // dependencies yangilandi
 // bundle size optimallashtirildi
 import type { SiteType, Brand } from '../types';
+// kod formatlash va indentatsiya
 
 export const brandService = {
 // image optimization qo'shildi
