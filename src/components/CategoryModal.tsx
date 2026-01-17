@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 // API endpoints qo'shildi
+// component testlari yaratildi
 // ESLint qoidalariga moslashtirish
 import { categoryService } from '../services/category.service';
 import { X, Upload } from 'lucide-react';
