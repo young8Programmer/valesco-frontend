@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+// API endpoint testlari qo'shildi
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogIn, Lock, User } from 'lucide-react';
