@@ -2,6 +2,7 @@ import { useAuth } from '../context/AuthContext';
 import { Package, FolderTree, Image, Tag } from 'lucide-react';
 import { useQuery } from 'react-query';
 // dependencies yangilandi
+// kod uslubini yaxshilash
 // memory leak muammosi hal qilindi
 import { productService } from '../services/product.service';
 import { categoryService } from '../services/category.service';
