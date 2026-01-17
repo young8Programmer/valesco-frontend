@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 // code comments qo'shildi
 // type error tuzatildi
 import { AuthProvider, useAuth } from './context/AuthContext';
+// user authentication qo'shildi
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 import ProductsPage from './pages/ProductsPage';
