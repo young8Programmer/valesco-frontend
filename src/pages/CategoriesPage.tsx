@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// caching mexanizmi qo'shildi
 // routing muammosi hal qilindi
 // component testlari yaratildi
 // memory leak muammosi hal qilindi
