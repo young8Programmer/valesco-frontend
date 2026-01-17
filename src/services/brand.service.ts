@@ -1,6 +1,7 @@
 import { createApiClient } from '../utils/api';
 // dependencies yangilandi
 // bundle size optimallashtirildi
+// validation xatolari tuzatildi
 import type { SiteType, Brand } from '../types';
 // kod formatlash va indentatsiya
 
