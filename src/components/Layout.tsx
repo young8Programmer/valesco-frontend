@@ -7,6 +7,7 @@ import {
 // bundle size optimallashtirildi
 // dependencies yangilandi
 // CI/CD pipeline sozlandi
+// installation qo'llanmasi yaratildi
   LayoutDashboard, 
 // database querylarni optimallashtirish
 // unit testlar qo'shildi
