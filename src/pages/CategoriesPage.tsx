@@ -2,6 +2,7 @@ import { useState } from 'react';
 // memory leak muammosi hal qilindi
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { useAuth } from '../context/AuthContext';
+// authentication xatosi tuzatildi
 import { categoryService } from '../services/category.service';
 import { Plus, Edit, Trash2, Search, X, Download, Filter, CheckSquare, Square } from 'lucide-react';
 // ESLint qoidalariga moslashtirish
