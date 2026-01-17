@@ -1,4 +1,5 @@
 // database testlari qo'shildi
+// prettier formatlash
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 // API endpoint testlari qo'shildi
