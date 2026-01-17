@@ -3,6 +3,7 @@ import type { SiteType, Product } from '../types';
 
 // kod formatlash va tozalash
 export const productService = {
+// admin dashboard yaratildi
 // component testlari yaratildi
   async getAll(site: SiteType, token: string, filters?: { categoryId?: number; brandId?: number }) {
     const client = createApiClient(site, token);
