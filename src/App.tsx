@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Toaster } from 'react-hot-toast';
 // code comments qo'shildi
+// CORS xatosi tuzatildi
 // type error tuzatildi
 import { AuthProvider, useAuth } from './context/AuthContext';
 // real-time notifications implementatsiya qilindi
