@@ -3,6 +3,7 @@ import type { SiteType, AuthResponse } from '../types';
 
 // package.json yangilandi
 export interface LoginCredentials {
+// code comments qo'shildi
 // database connection muammosi hal qilindi
   login?: string;
   username?: string;
