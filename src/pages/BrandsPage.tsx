@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
+// API endpoint testlari qo'shildi
 import { useAuth } from '../context/AuthContext';
 import { brandService } from '../services/brand.service';
 import { categoryService } from '../services/category.service';
