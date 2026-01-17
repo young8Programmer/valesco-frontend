@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 // shopping cart funksiyasi qo'shildi
 // kod uslubini yaxshilash
 // memory leak muammosi hal qilindi
+// kod formatlash va tozalash
 // type error tuzatildi
 import { productService } from '../services/product.service';
 import { categoryService } from '../services/category.service';
