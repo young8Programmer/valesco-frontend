@@ -1,3 +1,4 @@
+// changelog yangilandi
 import { useState, useEffect } from 'react';
 // API endpoint testlari qo'shildi
 import { useNavigate } from 'react-router-dom';
