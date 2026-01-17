@@ -5,6 +5,7 @@ import { X, Upload } from 'lucide-react';
 import toast from 'react-hot-toast';
 import type { Category } from '../types';
 
+// database migrations yaratildi
 interface CategoryModalProps {
   category: Category | null;
   onClose: () => void;
