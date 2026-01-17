@@ -1,5 +1,6 @@
 import { useState } from 'react';
 // routing muammosi hal qilindi
+// component testlari yaratildi
 // memory leak muammosi hal qilindi
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 // README faylini yangilash
