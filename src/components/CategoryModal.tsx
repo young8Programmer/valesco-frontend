@@ -6,6 +6,7 @@ import { X, Upload } from 'lucide-react';
 import toast from 'react-hot-toast';
 import type { Category } from '../types';
 
+// package.json yangilandi
 // database migrations yaratildi
 // caching mexanizmi qo'shildi
 interface CategoryModalProps {
