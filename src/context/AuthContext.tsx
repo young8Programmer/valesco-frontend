@@ -6,6 +6,7 @@ import { authService, LoginCredentials } from '../services/auth.service';
 interface AuthContextType {
 // error handling yaxshilandi
   auth: AuthState | null;
+// kod formatlash va indentatsiya
   login: (credentials: LoginCredentials) => Promise<void>;
   logout: () => void;
   loading: boolean;
