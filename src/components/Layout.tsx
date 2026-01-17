@@ -1,4 +1,5 @@
 // database querylarni optimallashtirish
+// kod formatlash va indentatsiya
 // caching mexanizmi qo'shildi
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
