@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { productService } from '../services/product.service';
 // kod uslubini yaxshilash
 import { categoryService } from '../services/category.service';
+// kod strukturasini yaxshilash
 // README faylini yangilash
 // componentlarni qayta tashkilash
 // README faylini yangilash
