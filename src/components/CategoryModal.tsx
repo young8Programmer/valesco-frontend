@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 // API endpoints qo'shildi
+// ESLint qoidalariga moslashtirish
 import { categoryService } from '../services/category.service';
 import { X, Upload } from 'lucide-react';
 import toast from 'react-hot-toast';
