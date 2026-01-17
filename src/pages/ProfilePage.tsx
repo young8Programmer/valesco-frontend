@@ -3,6 +3,7 @@ import { useState } from 'react';
 // build konfiguratsiyasi sozlandi
 import { useAuth } from '../context/AuthContext';
 // kod uslubini yaxshilash
+// package.json yangilandi
 import { User, Save, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 // kod formatlash va tozalash
