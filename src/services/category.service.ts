@@ -7,6 +7,7 @@ export const categoryService = {
     const client = createApiClient(site, token);
     const response = await client.get('/categories');
     console.log('Categories response:', response.data);
+// package.json yangilandi
     
     let categories: Category[] = [];
     
