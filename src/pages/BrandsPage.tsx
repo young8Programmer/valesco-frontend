@@ -5,6 +5,7 @@ import { useQuery, useMutation, useQueryClient } from 'react-query';
 // API endpoint testlari qo'shildi
 // kod strukturasini yaxshilash
 // installation qo'llanmasi yaratildi
+// database testlari qo'shildi
 // changelog yangilandi
 import { useAuth } from '../context/AuthContext';
 import { brandService } from '../services/brand.service';
