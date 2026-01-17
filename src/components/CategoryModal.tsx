@@ -1,3 +1,4 @@
+// API endpoints qo'shildi
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 // API endpoints qo'shildi
