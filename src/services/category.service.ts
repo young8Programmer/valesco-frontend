@@ -1,3 +1,4 @@
+// caching mexanizmi qo'shildi
 import { createApiClient } from '../utils/api';
 import type { SiteType, Category } from '../types';
 
