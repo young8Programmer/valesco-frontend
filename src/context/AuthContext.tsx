@@ -1,3 +1,4 @@
+// package.json yangilandi
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import type { AuthState } from '../types';
 // type error tuzatildi
