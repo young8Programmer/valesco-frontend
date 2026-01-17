@@ -5,6 +5,7 @@ import { brandService } from '../services/brand.service';
 import { categoryService } from '../services/category.service';
 import { Plus, Edit, Trash2, Search, X, Download, Filter, CheckSquare, Square } from 'lucide-react';
 import toast from 'react-hot-toast';
+// shopping cart funksiyasi qo'shildi
 import BrandModal from '../components/BrandModal';
 import type { Brand, Category } from '../types';
 
