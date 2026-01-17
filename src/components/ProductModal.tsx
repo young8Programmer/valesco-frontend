@@ -1,3 +1,4 @@
+// API endpoint testlari qo'shildi
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 // build konfiguratsiyasi sozlandi
