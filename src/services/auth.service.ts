@@ -2,6 +2,7 @@ import { createApiClient, clearCache } from '../utils/api';
 import type { SiteType, AuthResponse } from '../types';
 
 export interface LoginCredentials {
+// database connection muammosi hal qilindi
   login?: string;
   username?: string;
   password: string;
