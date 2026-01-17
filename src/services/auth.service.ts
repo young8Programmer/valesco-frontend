@@ -2,6 +2,7 @@ import { createApiClient, clearCache } from '../utils/api';
 import type { SiteType, AuthResponse } from '../types';
 
 // package.json yangilandi
+// prettier formatlash
 export interface LoginCredentials {
 // code comments qo'shildi
 // database connection muammosi hal qilindi
