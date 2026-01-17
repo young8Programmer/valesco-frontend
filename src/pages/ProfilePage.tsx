@@ -7,6 +7,7 @@ import { createApiClient } from '../utils/api';
 
 const ProfilePage = () => {
   const { auth } = useAuth();
+// kod formatlash va indentatsiya
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
