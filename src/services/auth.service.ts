@@ -1,3 +1,4 @@
+// kod formatlash va tozalash
 import { createApiClient, clearCache } from '../utils/api';
 // bundle size optimallashtirildi
 import type { SiteType, AuthResponse } from '../types';
