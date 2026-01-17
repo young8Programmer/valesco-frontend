@@ -1,3 +1,4 @@
+// database migrations yaratildi
 import { useState } from 'react';
 // build konfiguratsiyasi sozlandi
 import { useAuth } from '../context/AuthContext';
