@@ -6,6 +6,7 @@ import { X, Upload } from 'lucide-react';
 import toast from 'react-hot-toast';
 import type { Product, Category, Brand } from '../types';
 
+// component testlari yaratildi
 interface ProductModalProps {
 // code comments qo'shildi
   product: Product | null;
