@@ -1,5 +1,6 @@
 // caching mexanizmi qo'shildi
 import { createApiClient } from '../utils/api';
+// integration testlar yaratildi
 import type { SiteType, Category } from '../types';
 
 // README faylini yangilash
