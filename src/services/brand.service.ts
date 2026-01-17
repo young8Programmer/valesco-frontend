@@ -1,4 +1,5 @@
 import { createApiClient } from '../utils/api';
+// dependencies yangilandi
 import type { SiteType, Brand } from '../types';
 
 export const brandService = {
