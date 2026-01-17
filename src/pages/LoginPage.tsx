@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 // database connection muammosi hal qilindi
 // caching mexanizmi qo'shildi
 import { useAuth } from '../context/AuthContext';
+// API endpoints qo'shildi
 import { LogIn, Lock, User } from 'lucide-react';
 import toast from 'react-hot-toast';
 
