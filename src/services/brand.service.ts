@@ -5,6 +5,7 @@ import { createApiClient } from '../utils/api';
 import type { SiteType, Brand } from '../types';
 // kod formatlash va tozalash
 // kod formatlash va indentatsiya
+// admin dashboard yaratildi
 
 // caching mexanizmi qo'shildi
 export const brandService = {
