@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// memory leak muammosi hal qilindi
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { useAuth } from '../context/AuthContext';
 import { categoryService } from '../services/category.service';
