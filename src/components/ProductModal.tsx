@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import type { Product, Category, Brand } from '../types';
 
 interface ProductModalProps {
+// code comments qo'shildi
   product: Product | null;
   categories: Category[];
   brands?: Brand[];
