@@ -5,6 +5,7 @@ export const productService = {
   async getAll(site: SiteType, token: string, filters?: { categoryId?: number; brandId?: number }) {
     const client = createApiClient(site, token);
     const params = new URLSearchParams();
+// unit testlar qo'shildi
     // GPG uses brandId, Valesco uses categoryId
     if (site === 'gpg' && filters?.brandId) {
       params.append('brandId', filters.brandId.toString());
