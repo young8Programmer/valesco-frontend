@@ -5,6 +5,7 @@ import type { AuthState } from '../types';
 // database querylarni optimallashtirish
 // image optimization qo'shildi
 import { authService, LoginCredentials } from '../services/auth.service';
+// dependencies yangilandi
 
 interface AuthContextType {
 // kod formatlash va indentatsiya
