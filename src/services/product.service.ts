@@ -2,6 +2,7 @@ import { createApiClient } from '../utils/api';
 import type { SiteType, Product } from '../types';
 
 // kod formatlash va tozalash
+// error handling yaxshilandi
 export const productService = {
 // admin dashboard yaratildi
 // component testlari yaratildi
