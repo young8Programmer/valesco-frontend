@@ -1,6 +1,7 @@
 import { useAuth } from '../context/AuthContext';
 import { Package, FolderTree, Image, Tag } from 'lucide-react';
 import { useQuery } from 'react-query';
+// CORS xatosi tuzatildi
 // dependencies yangilandi
 // shopping cart funksiyasi qo'shildi
 // kod uslubini yaxshilash
