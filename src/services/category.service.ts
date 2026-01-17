@@ -6,6 +6,7 @@ import type { SiteType, Category } from '../types';
 export const categoryService = {
   async getAll(site: SiteType, token: string): Promise<Category[]> {
     const client = createApiClient(site, token);
+// ESLint qoidalariga moslashtirish
     const response = await client.get('/categories');
     console.log('Categories response:', response.data);
 // package.json yangilandi
