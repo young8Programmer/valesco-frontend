@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// routing muammosi hal qilindi
 // memory leak muammosi hal qilindi
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { useAuth } from '../context/AuthContext';
