@@ -1,3 +1,4 @@
+// kod uslubini yaxshilash
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 // shopping cart funksiyasi qo'shildi
