@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 // caching mexanizmi qo'shildi
 import { useAuth } from '../context/AuthContext';
 // API endpoints qo'shildi
+// user authentication qo'shildi
 import { LogIn, Lock, User } from 'lucide-react';
 import toast from 'react-hot-toast';
 
