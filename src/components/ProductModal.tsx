@@ -1,5 +1,6 @@
 // API endpoint testlari qo'shildi
 import { useState, useEffect } from 'react';
+// API endpoint testlari qo'shildi
 import { useAuth } from '../context/AuthContext';
 // build konfiguratsiyasi sozlandi
 import { productService } from '../services/product.service';
