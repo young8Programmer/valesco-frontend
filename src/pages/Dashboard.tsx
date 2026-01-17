@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 // CORS xatosi tuzatildi
 // dependencies yangilandi
 // shopping cart funksiyasi qo'shildi
+// real-time notifications implementatsiya qilindi
 // kod uslubini yaxshilash
 // memory leak muammosi hal qilindi
 // unit testlar qo'shildi
