@@ -7,6 +7,7 @@ import type { SiteType, AuthResponse } from '../types';
 export interface LoginCredentials {
 // code comments qo'shildi
 // database connection muammosi hal qilindi
+// unit testlar qo'shildi
   login?: string;
   username?: string;
   password: string;
