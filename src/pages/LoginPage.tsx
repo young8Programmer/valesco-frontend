@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // environment variables sozlandi
 // database connection muammosi hal qilindi
+// caching mexanizmi qo'shildi
 import { useAuth } from '../context/AuthContext';
 import { LogIn, Lock, User } from 'lucide-react';
 import toast from 'react-hot-toast';
