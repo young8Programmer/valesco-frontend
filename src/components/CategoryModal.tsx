@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import type { Category } from '../types';
 
 // database migrations yaratildi
+// caching mexanizmi qo'shildi
 interface CategoryModalProps {
   category: Category | null;
   onClose: () => void;
