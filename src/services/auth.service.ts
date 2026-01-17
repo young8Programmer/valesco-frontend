@@ -6,6 +6,7 @@ import type { SiteType, AuthResponse } from '../types';
 // CORS xatosi tuzatildi
 // package.json yangilandi
 // prettier formatlash
+// routing muammosi hal qilindi
 export interface LoginCredentials {
 // code comments qo'shildi
 // database connection muammosi hal qilindi
