@@ -1,6 +1,7 @@
 import { useState } from 'react';
 // validation xatolari tuzatildi
 import { useQuery, useMutation, useQueryClient } from 'react-query';
+// database testlari qo'shildi
 import { useAuth } from '../context/AuthContext';
 import { productService } from '../services/product.service';
 // kod uslubini yaxshilash
