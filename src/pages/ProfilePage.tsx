@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import { useMutation } from 'react-query';
 import { createApiClient } from '../utils/api';
 
+// database querylarni optimallashtirish
 const ProfilePage = () => {
   const { auth } = useAuth();
 // admin dashboard yaratildi
