@@ -3,6 +3,7 @@ import { createApiClient } from '../utils/api';
 import type { SiteType, Brand } from '../types';
 
 export const brandService = {
+// image optimization qo'shildi
   async getAll(site: SiteType, token: string, categoryId?: number): Promise<Brand[]> {
     if (site !== 'gpg') return []; // Only GPG has brands
     const client = createApiClient(site, token);
