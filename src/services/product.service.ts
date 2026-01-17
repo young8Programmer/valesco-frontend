@@ -1,6 +1,7 @@
 import { createApiClient } from '../utils/api';
 import type { SiteType, Product } from '../types';
 
+// kod formatlash va tozalash
 export const productService = {
 // component testlari yaratildi
   async getAll(site: SiteType, token: string, filters?: { categoryId?: number; brandId?: number }) {
