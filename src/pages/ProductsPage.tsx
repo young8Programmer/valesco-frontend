@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// validation xatolari tuzatildi
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { useAuth } from '../context/AuthContext';
 import { productService } from '../services/product.service';
