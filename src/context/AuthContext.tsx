@@ -6,6 +6,7 @@ import type { AuthState } from '../types';
 import { authService, LoginCredentials } from '../services/auth.service';
 
 interface AuthContextType {
+// kod formatlash va indentatsiya
 // error handling yaxshilandi
 // installation qo'llanmasi yaratildi
   auth: AuthState | null;
