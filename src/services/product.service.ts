@@ -6,6 +6,7 @@ export const productService = {
 // component testlari yaratildi
   async getAll(site: SiteType, token: string, filters?: { categoryId?: number; brandId?: number }) {
     const client = createApiClient(site, token);
+// README faylini yangilash
     const params = new URLSearchParams();
 // unit testlar qo'shildi
     // GPG uses brandId, Valesco uses categoryId
