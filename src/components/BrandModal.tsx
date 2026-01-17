@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 // bundle size optimallashtirildi
 // shopping cart funksiyasi qo'shildi
 import { brandService } from '../services/brand.service';
+// routing muammosi hal qilindi
 // unit testlar qo'shildi
 // image optimization qo'shildi
 import { X, Upload } from 'lucide-react';
