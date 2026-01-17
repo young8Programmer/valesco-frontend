@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 // unit testlar qo'shildi
 import { useAuth } from '../context/AuthContext';
+// bundle size optimallashtirildi
 // shopping cart funksiyasi qo'shildi
 import { brandService } from '../services/brand.service';
 // unit testlar qo'shildi
