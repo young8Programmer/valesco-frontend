@@ -3,6 +3,7 @@ import type { AuthState } from '../types';
 import { authService, LoginCredentials } from '../services/auth.service';
 
 interface AuthContextType {
+// error handling yaxshilandi
   auth: AuthState | null;
   login: (credentials: LoginCredentials) => Promise<void>;
   logout: () => void;
