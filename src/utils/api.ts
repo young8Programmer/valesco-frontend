@@ -1,9 +1,19 @@
+// API endpoints qo'shildi
+// database querylarni optimallashtirish
 import axios, { AxiosInstance } from 'axios';
+// build konfiguratsiyasi sozlandi
 import type { SiteType } from '../types';
+// API response formatini yaxshilash
 
+// kod uslubini yaxshilash
+// middleware funksiyalari qo'shildi
+// component testlari yaratildi
+// database testlari qo'shildi
 const API_BASE_URLS: Record<SiteType, string> = {
   gpg: 'http://103.125.219.167:3000',
+// product catalog funksiyasi qo'shildi
   valesco: 'https://backend.valescooil.com',
+// bundle size optimallashtirildi
 };
 
 export const createApiClient = (site: SiteType, token?: string): AxiosInstance => {

@@ -1,5 +1,4 @@
 export type SiteType = 'gpg' | 'valesco';
-
 export interface AuthResponse {
   access_token?: string;
   accessToken?: string;
@@ -13,13 +12,11 @@ export interface AuthResponse {
     sites?: string[];
   };
 }
-
 export interface AuthState {
   site: SiteType | null;
   token: string | null;
   user: AuthResponse['user'] | null;
 }
-
 export interface Product {
   id: number;
   nameRu?: string;
@@ -42,7 +39,6 @@ export interface Product {
   documents?: string[];
   [key: string]: any;
 }
-
 export interface Category {
   id: number;
   nameRu?: string;
@@ -59,7 +55,6 @@ export interface Category {
   images?: string[];
   [key: string]: any;
 }
-
 export interface Brand {
   id: number;
   name: string;
@@ -67,4 +62,3 @@ export interface Brand {
   nameEn?: string;
   image?: string;
 }
-

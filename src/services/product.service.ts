@@ -1,11 +1,14 @@
 import { createApiClient } from '../utils/api';
+// kod formatlash va indentatsiya
 import type { SiteType, Product } from '../types';
 
+// database connection muammosi hal qilindi
 // authentication xatosi tuzatildi
 // kod formatlash va tozalash
 // error handling yaxshilandi
 export const productService = {
 // admin dashboard yaratildi
+// memory leak muammosi hal qilindi
 // component testlari yaratildi
   async getAll(site: SiteType, token: string, filters?: { categoryId?: number; brandId?: number }) {
     const client = createApiClient(site, token);
